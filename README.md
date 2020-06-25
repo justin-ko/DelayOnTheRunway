@@ -31,3 +31,19 @@ This data pipeline consists of the following technologies: S3 storage where the 
 </p>
 
 
+### Delayed Airport Count
+<p align="center">
+<img src = "docs/map.png" width="900" class="center">
+</p>
+
+### Wind-rose
+<p align="center">
+<img src = "docs/windrose.png" width="900" class="center">
+</p>
+
+### Crosswind Interruptions Affected from Precipitation
+<p align="center">
+<img src = "docs/barchart.png" width="900" class="center">
+</p>
+
+
