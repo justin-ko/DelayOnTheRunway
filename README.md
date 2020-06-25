@@ -23,12 +23,26 @@ Domestic flights within the US and the weather data from ATL station between Jun
 * Airport timezones
 
 ## Data Pipeline
-
 This data pipeline consists of the following technologies: S3 storage where the raw data is stored, Spark for batch processing and stored as a PostgreSQL database, where the queries can be requested through the API calls using Flask and visualized through Dash.
 
 <p align="center">
 <img src = "docs/data_pipeline.png" width="900" class="center">
 </p>
+
+## Data Processing
+PySpark DataFrames were used for data transformation of flight and weather data. Below is a list of a few data processing steps
+
+Flight Data:
+* Determining whether the flight was departure or arrival w.r.t to ATL airport
+* Join tables to provide longitude and latitude coordinates and the timezone that it belongs to based on each airport IATA code
+* Formatting the string of date and time into datetime while converting the individual time zones of each airport to a common timezone
+* Round the time to the nearest 5 minutes to align with the intervals of the weather data
+
+Weather Data:
+* Convert weather station’s location to ATL’s timezone
+* Bucketized the wind speed and identify if it is a crosswind based on the wind direction
+* Binarize precipitation and check if crosswind limit is exceeded
+* Join with the flight dataframe based on IATA code
 
 
 ### Delayed Airport Count
