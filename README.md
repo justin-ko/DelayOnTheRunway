@@ -30,7 +30,7 @@ This data pipeline consists of the following technologies: S3 storage where the 
 </p>
 
 ## Data Processing
-PySpark DataFrames were used for data transformation of flight and weather data. Below is a list of a few data processing steps
+PySpark DataFrames were used for data transformation of flight and weather data. Below is a list of a few data processing steps.
 
 Flight Data:
 * Determining whether the flight was departure or arrival w.r.t to ATL airport
@@ -47,22 +47,30 @@ Weather Data:
 ## Data Storage (PostgreSQL)
 The transformed data that combined the historical flight and weather data is written to PosgreSQL database. Given the large volume of processed data, the database was indexed by the dep_time and arr_time to help speed up the querying process for the range of dates.
 
-## Data Visualization (Dash)
+## Query and Data Visualization (Flask, Dash)
+Queries are requested through API endpoints using Flask. The user is able to select a range or dates and specify departure/arrival to visualize various flight delayed information using Dash.
 
 ### Delayed Airport Count
+The bubble map depicts the amount of delays of a given airport within a date range. If departure is selected, it shows the destination airport from ATL airport which is departed from. Similarly, selecting arrival will show the originating airport to ATL airport. It is noted that delays are considered any arrivals or departures that were postponed by more than 15 minutes.
 
 <p align="center">
 <img src = "docs/map.png" width="900" class="center">
 </p>
 
 ### Wind-rose
+The windrose diagram represents the number of flight delays and the wind condition at the expected departure or arrival time. The bucketized wind speed (knots) and its cardinal direction may be used to assess severe crosswind conditions. It is noted that the runways on the ATL airport spans along East and West.
+
 <p align="center">
 <img src = "docs/windrose.png" width="500" class="center">
 </p>
 
-### Crosswind Interruptions Affected from Precipitation
+### Crosswind Interruptions from Precipitation
+The bar-chart compares interruptions (delays and cancellations) that were classified as weather-related, and identifies if it was likely due to crosswind. The maximum crosswind limit is often much lower if there is precipitation, as opposed to dry runway conditions. 
+
 <p align="center">
 <img src = "docs/barchart.png" width="500" class="center">
 </p>
+
+
 
 
