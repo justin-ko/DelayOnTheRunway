@@ -4,8 +4,12 @@
 1. [Introduction](#introduction)
 1. [Dataset](#dataset)
 1. [Data Pipeline](#data-pipeline)
-1. [Future Work](#future-work)
-1. [Contact Information](#contact-information)
+  1. [Data Processing](#data-processing)
+  1. [Data Storage](#data-storage)
+1. [Query and Data Visualization](#query-data-visualization)
+  1. [Delayed Airport Count](#delayed-airport-count)
+  1. [Wind-rose](#wind-rose)
+  1. [Crosswind Interruptions from Precipitation](#crosswind-interruptions-from-precipitation)
 
 
 ## Introduction
@@ -29,7 +33,7 @@ This data pipeline consists of the following technologies: S3 storage where the 
 <img src = "docs/data_pipeline.png" width="900" class="center">
 </p>
 
-## Data Processing
+### Data Processing
 PySpark DataFrames were used for data transformation of flight and weather data. Below is a list of a few data processing steps.
 
 Flight Data:
@@ -44,7 +48,7 @@ Weather Data:
 * Binarize precipitation and check if crosswind limit is exceeded
 * Join with the flight dataframe based on IATA code
 
-## Data Storage (PostgreSQL)
+### Data Storage (PostgreSQL)
 The transformed data that combined the historical flight and weather data is written to PosgreSQL database. Given the large volume of processed data, the database was indexed by the dep_time and arr_time to help speed up the querying process for the range of dates.
 
 ## Query and Data Visualization (Flask, Dash)
