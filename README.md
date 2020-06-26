@@ -44,8 +44,13 @@ Weather Data:
 * Binarize precipitation and check if crosswind limit is exceeded
 * Join with the flight dataframe based on IATA code
 
+## Data Storage (PostgreSQL)
+The transformed data that combined the historical flight and weather data is written to PosgreSQL database. Given the large volume of processed data, the database was indexed by the dep_time and arr_time to help speed up the querying process for the range of dates.
+
+## Data Visualization (Dash)
 
 ### Delayed Airport Count
+
 <p align="center">
 <img src = "docs/map.png" width="900" class="center">
 </p>
