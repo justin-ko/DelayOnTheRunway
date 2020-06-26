@@ -33,7 +33,7 @@ This data pipeline consists of the following technologies: S3 storage where the 
 <img src = "docs/data_pipeline.png" width="900" class="center">
 </p>
 
-## Data Processing
+## Data Processing (Spark)
 PySpark DataFrames were used for data transformation of flight and weather data. Below is a list of a few data processing steps.
 
 Flight Data:
