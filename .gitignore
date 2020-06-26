@@ -1,7 +1,5 @@
 # Custom ignores
-credentials/
-terminal_commands/
-
+instructions
 
 # Editors
 .vscode/
