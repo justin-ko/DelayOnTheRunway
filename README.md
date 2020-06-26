@@ -21,10 +21,10 @@ The vision of this project is to provide a database that characterizes the fligh
 Domestic flights within the US and the weather data from ATL station between June 2003 to March 2020 was used. They were retrieved as 46GB of CSV files and stored into AWS S3 Bucket.
 
 ### Source:
-* Historical flight data: Bureau of Transportation Statistics (BTS)
-* Historical weather data: National Oceanic and Atmospheric Administration (NOAA)
-* Longitude & latitude of airports
-* Airport timezones
+* [Historical flight data](https://transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time): Bureau of Transportation Statistics (BTS)
+* [Historical weather data](https://download.synopticdata.com): National Oceanic and Atmospheric Administration (NOAA)
+* [Longitude & latitude of airports](https://gist.github.com/mj1856/6d219c48697c550c2476)
+* [Airport timezones](https://gist.github.com/mj1856/6d219c48697c550c2476)
 
 ## Data Pipeline
 This data pipeline consists of the following technologies: S3 storage where the raw data is stored, Spark for batch processing and stored as a PostgreSQL database, where the queries can be requested through the API calls using Flask and visualized through Dash.
@@ -33,7 +33,7 @@ This data pipeline consists of the following technologies: S3 storage where the 
 <img src = "docs/data_pipeline.png" width="900" class="center">
 </p>
 
-### Data Processing
+## Data Processing
 PySpark DataFrames were used for data transformation of flight and weather data. Below is a list of a few data processing steps.
 
 Flight Data:
@@ -48,7 +48,7 @@ Weather Data:
 * Binarize precipitation and check if crosswind limit is exceeded
 * Join with the flight dataframe based on IATA code
 
-### Data Storage (PostgreSQL)
+## Data Storage (PostgreSQL)
 The transformed data that combined the historical flight and weather data is written to PosgreSQL database. Given the large volume of processed data, the database was indexed by the dep_time and arr_time to help speed up the querying process for the range of dates.
 
 ## Query and Data Visualization (Flask, Dash)
