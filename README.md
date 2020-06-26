@@ -1,15 +1,15 @@
 # Delay On The Runway: Tracking Flight Delays from Takeoff and Landing 
 
 ## Table of Contents
-1. [Introduction](#introduction)
-1. [Dataset](#dataset)
-1. [Data Pipeline](#data-pipeline)
-  1. [Data Processing](#data-processing)
-  1. [Data Storage](#data-storage)
-1. [Query and Data Visualization](#query-data-visualization)
-  1. [Delayed Airport Count](#delayed-airport-count)
-  1. [Wind-rose](#wind-rose)
-  1. [Crosswind Interruptions from Precipitation](#crosswind-interruptions-from-precipitation)
+- [Introduction](#introduction)
+- [Dataset](#dataset)
+- [Data Pipeline](#data-pipeline)
+- [Data Processing](#data-processing)
+- [Data Storage](#data-storage)
+- [Query and Data Visualization](#query-data-visualization)
+  * [Delayed Airport Count](#delayed-airport-count)
+  * [Wind-rose](#wind-rose)
+  * [Crosswind Interruptions from Precipitation](#crosswind-interruptions-from-precipitation)
 
 
 ## Introduction
