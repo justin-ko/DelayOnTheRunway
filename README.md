@@ -55,7 +55,7 @@ The transformed data that combined the historical flight and weather data is wri
 Queries are requested through API endpoints using Flask. The user is able to select a range or dates and specify departure/arrival to visualize various flight delayed information using Dash.
 
 <p align="center">
-<img src = "docs/query bar.png" width="900" class="center">
+<img src = "docs/query_bar.png" width="900" class="center">
 </p>
 
 ### Delayed Airport Count
