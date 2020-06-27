@@ -15,8 +15,8 @@ import re
 
 flask_IP = "http://10.0.0.4:5000"
 
-dep_or_arr_dropdown = [{'label': 'departure', 'value': 'departure'},
-                        {'label': 'arrival', 'value': 'arrival'}]
+dep_or_arr_dropdown = [{'label': 'Departure from ATL', 'value': 'departure'},
+                        {'label': 'Arrival to ATL', 'value': 'arrival'}]
 
 def updateHeatmap(dep_or_arr, start_date, end_date):
     call_API = flask_IP + "/airportDelayCount"
@@ -41,7 +41,7 @@ def updateHeatmap(dep_or_arr, start_date, end_date):
 
     df_delay_count = df_delay_count[df_delay_count[iata] != 'ATL'] 
     fig = px.scatter_geo(df_delay_count, lon=longitude, lat=latitude, #color=del15,
-                    size=del15, locationmode = 'USA-states', center={"lat": 39.8283, "lon": -98.5795}, scope='usa', hover_name=iata, height=700)
+                    size=del15, locationmode = 'USA-states', center={"lat": 39.8283, "lon": -98.5795}, scope='usa', hover_name=iata, height=400)
     fig.update_layout(
         legend_title_text='Trend',
     )
@@ -114,16 +114,16 @@ app.layout = html.Div(children=[
         dcc.DatePickerRange(
             id='wind_rose_date_picker',
             min_date_allowed=datetime(2003, 1, 1),
-            max_date_allowed=datetime(2020, 6, 1),
+            max_date_allowed=datetime(2020, 2, 29),
             initial_visible_month=datetime(2019, 11, 5),
-            end_date=datetime(2019, 11, 25).date()
+            end_date=datetime(2019, 11, 30).date()
         ),
     ], style={'marginBottom': 25, 'marginTop': 10}),
     
     # Heatmap
     html.Div([
         html.Div('Delay Count', style={'color': 'black', 'fontSize': 24}),
-        html.Div('Represents delays from departure to ATL or destination from ATL', style={'color': 'black', 'fontSize': 14}),
+        html.Div('Represents the delay counts from departure to ATL or destination from ATL.', style={'color': 'black', 'fontSize': 14}),
         dcc.Graph(id='heatmap'),
     ]),
 
@@ -131,13 +131,13 @@ app.layout = html.Div(children=[
     html.Div([
         html.Div([
             html.Div('Wind-Rose Diagram', style={'color': 'black', 'fontSize': 24}),
-            html.Div('Represents the number of flights that departed/arrived under a given wind speed and direction', style={'color': 'black', 'fontSize': 14}),
+            html.Div('Represents the number of flights that departed/arrived under a given wind speed and direction.', style={'color': 'black', 'fontSize': 14}),
             dcc.Graph(id = 'wind-rose',),
         ], className ='six columns'),
 
         html.Div([
             html.Div('Interruptions from Crosswind (Dry vs. Precipitation)', style={'color': 'black', 'fontSize': 24}),
-            html.Div('Crosswind limit is affected based on the runway conditions', style={'color': 'black', 'fontSize': 14}),
+            html.Div('Shows the number of "weather related" interruptions specifically caused by the crosswinds (CW). The maximum allowable limit for CW is much lower with precipitation on the runway.', style={'color': 'black', 'fontSize': 14}),
             dcc.Graph(id = 'bar-chart'),
         ], className ='six columns'),
     ], className = 'row')  
