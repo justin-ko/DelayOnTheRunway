@@ -8,7 +8,6 @@ from datetime import datetime, timedelta
 from io import StringIO
 import pandas as pd
 from process_data import *
-#from yamlParser import yamlParser
 
 if __name__ == "__main__":
     myFile = yamlParser("credentials/aws.yaml")
@@ -63,9 +62,6 @@ if __name__ == "__main__":
     weather_df6 = cleanData(weather_df5).exceedCrosswindLimit()
 
     join_flight_weather_df = flight_df8.join( weather_df6, on ='time_interval', how='left' )
-    # join_flight_weather_df = cleanData(join_flight_weather_df).verifyCrosswindDelayDry()
-    # join_flight_weather_df = cleanData(join_flight_weather_df).verifyCrosswindDelayWet()
-    # join_flight_weather_df = cleanData(join_flight_weather_df).verifyCrosswindDelayTotal()
     
     # Create timezone dataframe
     spark_timezone_df = spark.read.option("header", "true").csv(filename4)
